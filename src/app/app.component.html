@@ -1,0 +1,63 @@
+<div class="main" #main>
+
+    <!-- BARRA DI NAVIGAZ SUPERIORE -->
+    <div class="header">
+        <div class="logo" #logo>
+            <h2>Your Logo</h2>
+        </div>
+        <ul class="menu" #menu>
+            <li class="menu__item"><a class="menu__link active">Menu 1</a></li>
+            <li class="menu__item"><a class="menu__link">Menu 2</a></li>
+            <li class="menu__item"><a class="menu__link">Menu 3</a></li>
+            <li class="menu__item"><a class="menu__link">Menu 4</a></li>
+            <li class="menu__item"><a class="menu__link">Menu 5</a></li>
+        </ul>
+        <div class="search" #search>
+            <button class="search-icon">
+        <div class="icon icon-search">
+          <img src="../assets/magnifying-glass-svgrepo-com.svg" alt="">
+        </div>
+      </button>
+            <button class="call">Get In Touch</button>
+        </div>
+    </div>
+
+    <!-- QUESTIONARIO -->
+    <div class="questionnaire">
+        <div class="question" #questionContainer>
+            <h2 class="question_heading">Question {{currentQuestionIndex +1}}</h2>
+            <div class="question_q">{{question?.questionText}}</div>
+            <div class="question_answers" #answer>
+                <div class="answer" *ngFor="let answer of question.options" #answerr (click)="onSelect(answerr)">
+                    <p>{{answer?.text}}</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- BOTTONI NEXT E PREVIOUS -->
+        <div class="actions" #actions>
+            <button class="previous" (click)="previous()">
+        <div class="icon icon-back">
+          <img src="../assets/chevron-left.svg" alt="">
+        </div>
+      </button>
+            <button class="next" (click)="nextQuestion()">Next</button>
+        </div>
+
+        <!-- BARRA DI PROGRESSIONE -->
+        <div class="progress_bar">
+            <div #slider class="progress_bar--slider"></div>
+        </div>
+        <div class="progress_actions" #progress>
+            <div class="p-actions-left">
+                <span>Step {{ currentQuestionIndex + 1 }}</span>
+                <span>Out Of</span>
+                <span>{{  questions.length  }}</span>
+            </div>
+            <div class="p-actions-right">
+                <span>{{  progressValue  }}%</span>
+            </div>
+        </div>
+    </div>
+</div>
